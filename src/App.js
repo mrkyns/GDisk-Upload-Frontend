@@ -3,9 +3,14 @@ import "./App.css";
 
 function App() {
   const fileInputRef = useRef(null);
+  const [load, setLoad] = useState(false);
+  const [status, setStatus] = useState();
 
   const handleFileUpload = async () => {
     const files = fileInputRef.current.files;
+    fileInputRef.current.files.length < 1
+      ? setStatus("You need to select images first")
+      : setStatus("");
 
     if (files.length > 0) {
       const formData = new FormData();
@@ -26,8 +31,11 @@ function App() {
 
         const data = await response.json();
         console.log("upload files: ", data.files);
+        setLoad(false);
+        setStatus("Images uploaded");
       } catch (error) {
         console.log("error");
+        setStatus("Something went wrong");
       }
     }
   };
@@ -35,8 +43,10 @@ function App() {
   return (
     <div className="App">
       <h1>Google photo upload</h1>
-      <input type="file" multiple ref={fileInputRef} />
+      <input type="file" multiple accept="image/*" ref={fileInputRef} />
       <button onClick={handleFileUpload}>Uplaod Files</button>
+      {load ? <h1>upload in progres</h1> : <span></span>}
+      <h1>{status}</h1>
     </div>
   );
 }
