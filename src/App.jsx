@@ -1,5 +1,8 @@
 import { useRef, useState } from "react";
 import "./App.css";
+import Loader from "./components/Loader";
+import Logo from "./components/Logo";
+import Moto from "./components/Moto";
 
 function App() {
   const fileInputRef = useRef(null);
@@ -40,12 +43,28 @@ function App() {
     }
   };
 
+  const handleFileChange = () => {
+    setStatus("");
+  };
+
   return (
     <div className="App">
-      <h1>Google photo upload</h1>
-      <input type="file" multiple accept="image/*" ref={fileInputRef} />
-      <button onClick={handleFileUpload}>Uplaod Files</button>
-      {load ? <h1>upload in progres</h1> : <span></span>}
+      <div className="app_window">
+        <Logo />
+        <h1>Podelite svoje uspomene sa nama</h1>
+        <div>
+          <input
+            type="file"
+            multiple
+            accept="image/*"
+            ref={fileInputRef}
+            onChange={handleFileChange}
+          />
+          <button onClick={handleFileUpload}>Uplaod Files</button>
+        </div>
+      </div>
+      <div className="app_signiture">designed and created by mrkydesign</div>
+      {load ? <Loader /> : <span></span>}
       <h1>{status}</h1>
     </div>
   );
