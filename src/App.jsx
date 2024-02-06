@@ -8,7 +8,6 @@ import { ViewportContext } from "./context/ViewportContext";
 
 function App() {
   const { width } = useContext(ViewportContext);
-  console.log(width);
   const breakepoint = 570;
   const fileInputRef = useRef(null);
   const [load, setLoad] = useState(false);
