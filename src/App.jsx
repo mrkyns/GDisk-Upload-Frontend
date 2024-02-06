@@ -1,10 +1,15 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import "./App.css";
 import Loader from "./components/Loader";
 import Logo from "./components/Logo";
+import LogoMobile from "./components/LogoMobile";
 import UploadIcon from "./components/UploadIcon";
+import { ViewportContext } from "./context/ViewportContext";
 
 function App() {
+  const { width } = useContext(ViewportContext);
+  console.log(width);
+  const breakepoint = 570;
   const fileInputRef = useRef(null);
   const [load, setLoad] = useState(false);
   const [status, setStatus] = useState("Podelite svoje uspomene sa nama");
@@ -51,7 +56,7 @@ function App() {
     <div className="App">
       <div className="app_window">
         <div className="logo">
-          <Logo />
+          {width > breakepoint ? <Logo /> : <LogoMobile />}
           <span>03.08.2024</span>
         </div>
         <h1>{status}</h1>
