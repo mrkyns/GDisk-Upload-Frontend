@@ -85,6 +85,17 @@ h1 {
   .app_window {
     margin-top: 100px;
     width: 90%;
+    padding: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .logo svg {
+    width: 100%;
+  }
+
+  .logo span {
+    font-size: 16px;
   }
 }
 
@@ -141,7 +152,6 @@ button {
   border: 0px;
   border-radius: 10px;
   padding: 10px 40px;
-
   font-size: 15px;
   font-family: "Poppins", sans-serif;
   transition: 0.5s;
@@ -149,6 +159,7 @@ button {
   box-shadow: 5px 5px 15px var(--shadow);
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 5px;
 }
 
@@ -165,6 +176,32 @@ button svg {
 
 button:hover svg {
   fill: #fff;
+}
+
+@media (max-width: 1024px) {
+  .input_container {
+    width: 380px;
+  }
+}
+
+@media (max-width: 700px) {
+  .data_input {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .input_container {
+    width: 100%;
+    height: 80px;
+  }
+
+  input[type="file"]::file-selector-button {
+    height: 80px;
+  }
+
+  button {
+    height: 80px;
+  }
 }
 
 /*******************************
