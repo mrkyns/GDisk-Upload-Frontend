@@ -2,17 +2,17 @@ import { useRef, useState } from "react";
 import "./App.css";
 import Loader from "./components/Loader";
 import Logo from "./components/Logo";
-import Moto from "./components/Moto";
+import UploadIcon from "./components/UploadIcon";
 
 function App() {
   const fileInputRef = useRef(null);
   const [load, setLoad] = useState(false);
-  const [status, setStatus] = useState();
+  const [status, setStatus] = useState("Podelite svoje uspomene sa nama");
 
   const handleFileUpload = async () => {
     const files = fileInputRef.current.files;
     fileInputRef.current.files.length < 1
-      ? setStatus("You need to select images first")
+      ? setStatus("Prvo morate izabrati slike za upload.")
       : setStatus("");
 
     if (files.length > 0) {
@@ -35,37 +35,43 @@ function App() {
         const data = await response.json();
         console.log("upload files: ", data.files);
         setLoad(false);
-        setStatus("Images uploaded");
+        setStatus("Slike su uploadovane!");
       } catch (error) {
         console.log("error");
-        setStatus("Something went wrong");
+        setStatus("Nešto nije uredu, probajte ponovo.");
       }
     }
   };
 
   const handleFileChange = () => {
-    setStatus("");
+    setStatus("Podelite svoje uspomene sa nama");
   };
 
   return (
     <div className="App">
       <div className="app_window">
-        <Logo />
-        <h1>Podelite svoje uspomene sa nama</h1>
-        <div>
-          <input
-            type="file"
-            multiple
-            accept="image/*"
-            ref={fileInputRef}
-            onChange={handleFileChange}
-          />
-          <button onClick={handleFileUpload}>Uplaod Files</button>
+        <div className="logo">
+          <Logo />
+          <span>03.08.2024</span>
+        </div>
+        <h1>{status}</h1>
+        <div className="data_input">
+          <div className="input_container">
+            <input
+              type="file"
+              multiple
+              accept="image/*"
+              ref={fileInputRef}
+              onChange={handleFileChange}
+            />
+          </div>
+          <button onClick={handleFileUpload}>
+            Uplaod <UploadIcon />
+          </button>
         </div>
       </div>
       <div className="app_signiture">designed and created by mrkydesign</div>
       {load ? <Loader /> : <span></span>}
-      <h1>{status}</h1>
     </div>
   );
 }
