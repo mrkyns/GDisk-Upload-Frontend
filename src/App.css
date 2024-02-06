@@ -89,12 +89,27 @@ h1 {
   }
 }
 
+@media (max-width: 699px) {
+  .app_window {
+    margin-top: 20px;
+    width: 90%;
+    padding: 50px;
+  }
+}
+
+@media (max-width: 567px) {
+  .logo span {
+    margin-top: -5px;
+  }
+}
+
 @media (max-width: 400px) {
   .logo svg {
     width: 100%;
   }
 
   .logo span {
+    margin-top: -20px;
     font-size: 16px;
   }
 }
