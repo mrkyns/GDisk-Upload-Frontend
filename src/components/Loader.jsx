@@ -10,7 +10,10 @@ export default function Loader() {
             <div></div>
           </div>
           <Stamp />
-          <span>Slike se uploduju, molimo vas sačekajte</span>
+
+          <div className="loader_txt">
+            slike se uploduju molimo vas sačekajte
+          </div>
         </div>
       </div>
     </>
