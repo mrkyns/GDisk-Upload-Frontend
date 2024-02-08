@@ -76,7 +76,6 @@ function App() {
       </div>
       <div className="app_signiture">designed and created by mrkydesign</div>
       {load ? <Loader /> : <span></span>}
-      <Loader />
     </div>
   );
 }
