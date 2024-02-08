@@ -259,10 +259,32 @@ button:hover svg {
   margin-left: 10px;
 }
 
-.loader span {
-  color: var(--text);
+.loader_txt {
+  margin-top: -25px;
   font-size: 20px;
   font-weight: 300;
+  position: relative;
+  color: var(--text);
+  animation: loader_text 4s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@keyframes loader_text {
+  0% {
+    transform: translateY(-150px) rotate(45deg);
+    opacity: 0;
+  }
+  35% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(-45deg);
+    opacity: 0;
+  }
 }
 
 .lds-heart {
@@ -273,6 +295,7 @@ button:hover svg {
   transform: rotate(45deg);
   transform-origin: 40px 40px;
 }
+
 .lds-heart div {
   top: 24px;
   left: 24px;
@@ -282,6 +305,7 @@ button:hover svg {
   background: var(--purple);
   animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
+
 .lds-heart div:after,
 .lds-heart div:before {
   content: " ";
@@ -291,14 +315,17 @@ button:hover svg {
   height: 24px;
   background: var(--purple);
 }
+
 .lds-heart div:before {
   left: -16px;
   border-radius: 50% 0 0 50%;
 }
+
 .lds-heart div:after {
   top: -16px;
   border-radius: 50% 50% 0 0;
 }
+
 @keyframes lds-heart {
   0% {
     transform: scale(0.95);
